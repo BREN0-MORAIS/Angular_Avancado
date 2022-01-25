@@ -1,11 +1,18 @@
 <div class="container main-container p-3">
     <h4>Demo Cadastro</h4>
     <hr/>
+
+    <!-- para poder pegar os dados de forma agrupado adiciona a tag formGroup  -->
     <form novalidate (ngSubmit)="adicionarUsuario()" [formGroup]="cadastroForm">
      <div class="form-horizontal">
          <div class="from-group p-3">
              <label for="Nome" class="col-md-2 control-label">Nome Completo</label>
              <div class="col-md-10">
+            
+                <!--passa uma validação pra ver se o formulario possui algum erro, caso possua ele apresentarar a classe 
+                    para o usuário que resultará na invalidade do input.
+                -->
+
                  <input 
                  [ngClass]="{'is-invalid':cadastroForm.get('nome')?.errors && (cadastroForm.get('nome')?.dirty || cadastroForm.get('nome')?.touched)}"
                  
@@ -29,6 +36,18 @@
             <label for="email" class="col-md-2 control-label">E-mail</label>
             <div class="col-md-10">
                 <input type="text" id="email" class="form-control" placeholder="E-mail (requerido)" formControlName="email"/>
+
+                  
+                <span class="text-danger" *ngIf="cadastroForm.get('email')?.errors?.required && (cadastroForm.get('email')?.dirty || cadastroForm.get('nome')?.touched)">
+                    <p>Preencha o campo email</p>
+                 </span>
+
+                   <!-- ngif passa uma condivional pra verificar se o email possuil alguma validade fora do contextp  ou se ele
+                foi preebchido ou se  ele foi tocado, caso alguma opção seja verdadeira mostrará a menssagem abaixo
+                -->
+                 <span class="text-danger" *ngIf="cadastroForm.get('email')?.errors?.email && (cadastroForm.get('email')?.dirty || cadastroForm.get('nome')?.touched)">
+                    <p>E-mail com formato inválido</p>
+                 </span>
             </div>
         </div>
 
@@ -63,7 +82,8 @@
             <div class="col-md-4 coll-md-offeset-2">
                 <p>Formulário valido:{{cadastroForm.valid}}</p>
                 <p>Formulário Tocado:{{cadastroForm.touched}}</p>
-                <p>Formulário Seujo:{{cadastroForm.dirty}}</p>
+                <p>Formulário Sujo:{{cadastroForm.dirty}}</p>
+                <p>Formulário Sujo:{{formResult}}</p>
 
             </div>
         </div>

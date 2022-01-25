@@ -13,8 +13,9 @@ import {
   styles: [],
 })
 export class CadastroComponent implements OnInit {
-  cadastroForm!: FormGroup;
+  cadastroForm!: FormGroup; //é necessario para poder armazenar e referenciar qual formulário deve pegar os dados
   Usuario!: Usuario;
+  formResult: string = "";
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -31,16 +32,20 @@ export class CadastroComponent implements OnInit {
     this.cadastroForm = this.fb.group({
       nome: ["", Validators.required],
       cpf: [""],
-      email: [""],
+      email: ["", [Validators.required, Validators.email]],
       senha: [""],
       senhaConfirmacao: [""],
-    });
+    }); //armazenar dados do formulario de forma a agrupar é necessário injetar o formBuilder
+    //armaxena os dados do from builder
   }
 
   adicionarUsuario() {
     // let x = this.cadastroForm.value;
-    this.Usuario = Object.assign({}, this.Usuario, this.cadastroForm.value);
-
-    console.log(this.Usuario);
+    if (this.cadastroForm.dirty && this.cadastroForm.valid) {
+      this.Usuario = Object.assign({}, this.Usuario, this.cadastroForm.value); //converte os  valores do frormulario em objetos
+      this.formResult = JSON.stringify(this.cadastroForm.value);
+    } else {
+      console.log("asd");
+    }
   }
 }
