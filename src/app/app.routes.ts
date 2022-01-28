@@ -13,6 +13,13 @@ export const rootRouterConfig: Routes = [
   { path: "sobre", component: SobreComponent },
   { path: "fetures-data-binding", component: DataBindingComponent },
   { path: "cadastro", component: CadastroComponent },
+  {
+    path: "produtos",
+    loadChildren: () =>
+      import("./demos/arquitetura-componentes/produto.module").then(
+        (m) => m.ProdutoModule
+      ), //abordagem lazy loading
+  },
 ];
 
 @NgModule({

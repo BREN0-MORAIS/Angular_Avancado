@@ -1,0 +1,15 @@
+<div class="col">
+    <div class="card h-100">
+      <img src="/assets/{{produto.imagem}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{produto.nome}}</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+      <div class="card-footer">
+        <b class="text-muted" style="font-size: 12pt;">R$: item.valor</b>
+      </div>
+      <span *ngIf="produto.ativo === true">Produto Ativo</span>
+      <span *ngIf="produto.ativo === false">Produto Inativo</span>
+      <a href="#" class="btn btn-primary">Comprar</a>
+    </div>
+  </div>
