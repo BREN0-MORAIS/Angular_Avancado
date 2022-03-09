@@ -5,6 +5,7 @@ import { DataBindingComponent } from "./demos/data-binding/data-binding.componen
 import { ContatoComponent } from "./Institucional/contato/contato.component";
 import { SobreComponent } from "./Institucional/sobre/sobre.component";
 import { HomeComponent } from "./navegacao/home/home.component";
+import { NotFoundComponent } from "./navegacao/not-found/not-found.component";
 
 export const rootRouterConfig: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -20,6 +21,8 @@ export const rootRouterConfig: Routes = [
         (m) => m.ProdutoModule
       ), //abordagem lazy loading
   },
+
+  { path: "**", component: NotFoundComponent }, // caso o usuário escreva algo na url que não tenha na aplicação.
 ];
 
 @NgModule({

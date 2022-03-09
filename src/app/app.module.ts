@@ -10,7 +10,6 @@ import { CadastroComponent } from "./demos/reactiveForms/cadastro/cadastro.compo
 import { ReactiveFormsModule } from "@angular/forms";
 import { NavegacaoModule } from "./navegacao/navegacao.module";
 import { ProdutoModule } from "./demos/arquitetura-componentes/produto.module";
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,19 +1,17 @@
 <div class="container">
-    <div class="card text-center">
-        <div class="card-header">
-          Featured
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        <div class="card-footer text-muted">
-          2 days ago
-        </div>
-      </div>
+<h1 #teste>Lista de Produtos</h1>
 
       <div class="row row-cols-1 row-cols-md-3 g-4 m-2">
-      <catalago-component  *ngFor="let produto of listProdutos" [produto]="produto"></catalago-component>
+
+        <!-- passa os dados para o componete filho [produto] -->
+        <!-- o status pega o status do componete filho e passa para o pai -->
+      <catalago-component  *ngFor="let produto of listProdutos" [produto]="produto" 
+      (status)="mudarStatus($event)">
+        
+        <!-- Conteúdo sendo passado para a yag do nosso componete catalogo -->
+        <h5 class="acabou">ou vá até uma de nossas lojas</h5>
+
+        <h5 class="corre">corre</h5>
+      </catalago-component>
       </div>
 </div>

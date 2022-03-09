@@ -5,11 +5,32 @@
         <h5 class="card-title">{{produto.nome}}</h5>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
+
+      <div *ngIf="!produto.ativo" class="card-body">
+      <div>
+        <h4>Avise-me quando chegar</h4>
+
+        <!-- para adicionar conteudo dentro de um componente é necessário adiconar a tag 
+        e para de marcar a quantidade de elemento e as tags a serem utilizadas 
+        utiliza-se o select=""
+        -->
+        <ng-content select=".acabou"></ng-content>
+        <ng-content select=".corre"></ng-content>
+   
+      </div>
+      </div>
       <div class="card-footer">
         <b class="text-muted" style="font-size: 12pt;">R$: item.valor</b>
       </div>
       <span *ngIf="produto.ativo === true">Produto Ativo</span>
       <span *ngIf="produto.ativo === false">Produto Inativo</span>
       <a href="#" class="btn btn-primary">Comprar</a>
+    </div>
+
+    <div class="card-footer">
+      <a [ngClass]="produto.ativo ? 'btn btn-sucess' : 'btn btn-danger' " class="btn btn-success" 
+      (click)="emitirEvento()" href="javascript:void(0)">
+       <span [ngClass]="produto.ativo ? 'fa fa-toggle-on' : 'fa fa-toggle-off' "><span>Status</span></span>
+      </a>
     </div>
   </div>
