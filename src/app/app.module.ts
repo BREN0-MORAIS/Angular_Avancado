@@ -29,7 +29,9 @@ import { ProdutoModule } from "./demos/arquitetura-componentes/produto.module";
     ProdutoModule, //para  poder pegar dados do formulário é necessário importar [módulo importado]
     // [RouterModule.forRoot(rootRouterConfig, { useHash: false })],-> substituido
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue: "/" }],
+  providers: [
+    // { provide: APP_BASE_HREF, useValue: "/" }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

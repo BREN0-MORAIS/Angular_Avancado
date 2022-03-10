@@ -32,5 +32,14 @@
       (click)="emitirEvento()" href="javascript:void(0)">
        <span [ngClass]="produto.ativo ? 'fa fa-toggle-on' : 'fa fa-toggle-off' "><span>Status</span></span>
       </a>
+
+      <!-- depois de ter adicionado a rota em produto.route 
+        é necessário para ter sucesso no redirecionmento
+        adicionar os seguintes parametros dentro do routerLink
+        a rota que deseja ser redirecionado e o parametro que ira ser
+        passado para o componente.
+      
+      -->
+      <a class="btn btn-warning m-1" [routerLink]="['editar/',produto.id]">Editar</a>
     </div>
   </div>
