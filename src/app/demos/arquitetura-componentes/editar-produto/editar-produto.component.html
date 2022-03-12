@@ -1,1 +1,5 @@
-<p>editar-produto works!</p>
+<img height="500" width="50"  src='/assets/{{Produto?.imagem}}' class="card-img-top" alt="...">
+
+<label><b>Nome: </b>{{Produto?.nome}}</label><br>
+<label><b>Valor:</b> {{Produto?.valor}}</label><br>
+<label><b>Ativo:</b> {{Produto?.ativo == true ? 'Ativo' : 'Inativo'}}</label><br>
