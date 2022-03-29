@@ -1,3 +1,4 @@
+import { ActivatedRoute } from "@angular/router";
 import { fromEvent, Observable } from "rxjs";
 import { Produto } from "./../models/produto";
 import {
@@ -16,7 +17,7 @@ import {
 export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
   @ViewChild("teste", { static: false }) mensagemTela!: ElementRef;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
   ngAfterViewInit(): void {
     let clickTexto: Observable<any> = fromEvent(
       this.mensagemTela.nativeElement,
@@ -34,7 +35,11 @@ export class ProdutoDashboardComponent implements OnInit, AfterViewInit {
   mudarStatus(event: Produto) {
     event.ativo = !event.ativo;
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.listProdutos = this.route.snapshot.data["produtos"];
+
+    console.log(this.route.snapshot.data["teste"]); //pasando um objeto via rota
+  }
 
   listProdutos: Produto[] = [
     { id: 1, ativo: true, imagem: "01.png", nome: "Óleo1", valor: 10.0 },

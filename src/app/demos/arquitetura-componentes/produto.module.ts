@@ -1,3 +1,4 @@
+import { ProdutosResolve } from "./services/produto.resolve";
 import { ProdutoService } from "./services/produto.service";
 import { ProdutoAppComponet } from "./produto.app.component";
 import { CatalogoComponent } from "./componets/produto-componentes/catalago.component";
@@ -19,6 +20,6 @@ import { EditarProdutoComponent } from "./editar-produto/editar-produto.componen
 
   imports: [CommonModule, RouterModule, ProdutoRoutingModule],
   exports: [ProdutoAppComponet],
-  providers: [ProdutoService],
+  providers: [ProdutoService, ProdutosResolve],
 })
 export class ProdutoModule {}

@@ -30,7 +30,8 @@ export const rootRouterConfig: Routes = [
   criar o modulo de routes e passa ela como principal, e adicona o rootRouterConfig
    com parametro de rotas.
   */
-  imports: [RouterModule.forRoot(rootRouterConfig)],
+  imports: [RouterModule.forRoot(rootRouterConfig, { enableTracing: true })],
+  /*enableTracing: true , habilita o log de rotas*/
 
   /*
   pra dicar acessivel para todos é necessário  adicionar no exports.

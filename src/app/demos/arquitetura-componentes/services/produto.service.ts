@@ -34,7 +34,16 @@ export class ProdutoService {
     ];
   }
 
-  obterTodos(): Produto[] {
+  // obterTodos(): Produto[] {
+  //   return this.produtos;
+  // }
+
+  obterTodos(estado: string): Produto[] {
+    if (estado === "ativos") {
+      return this.produtos.filter((produto) => produto.ativo == true);
+    } else if (estado === "inativos") {
+      return this.produtos.filter((produto) => produto.ativo == false);
+    }
     return this.produtos;
   }
 

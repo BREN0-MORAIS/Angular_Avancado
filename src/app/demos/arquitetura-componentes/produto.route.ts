@@ -1,3 +1,4 @@
+import { ProdutosResolve } from "./services/produto.resolve";
 import { ProdutoDashboardComponent } from "./produto-dashboard/produto-dashboard.component";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
@@ -11,7 +12,22 @@ export const rootRouterConfig: Routes = [
     path: "",
     component: ProdutoAppComponet,
     children: [
+      //redireciona caso o usuário digite nada na url
+      // { path: "", component: ProdutoDashboardComponent },
       { path: "", component: ProdutoDashboardComponent },
+
+      {
+        path: ":estado",
+        component: ProdutoDashboardComponent,
+        resolve: {
+          produtos: ProdutosResolve,
+        },
+        data: {
+          teste: "informação", //permite que passa um objeto ou dados complexos pela rota e pega onde ele se encaminha
+        },
+      },
+
+      // { path: "", component: ProdutoDashboardComponent },
       //rota filha da rota principal evita dar problema de roteaamento
 
       /*para que possa funcionar é necessário criar  um arquivo ts 
