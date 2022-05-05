@@ -10,6 +10,8 @@ import { CadastroComponent } from "./demos/reactiveForms/cadastro/cadastro.compo
 import { ReactiveFormsModule } from "@angular/forms";
 import { NavegacaoModule } from "./navegacao/navegacao.module";
 import { ProdutoModule } from "./demos/arquitetura-componentes/produto.module";
+import { AdminModule } from "./admin/admin.module";
+import { AuthGuard } from "./services/app.guard";
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,10 +28,13 @@ import { ProdutoModule } from "./demos/arquitetura-componentes/produto.module";
     ReactiveFormsModule,
     appRoutingModule,
     NavegacaoModule,
-    ProdutoModule, //para  poder pegar dados do formulário é necessário importar [módulo importado]
+    ProdutoModule,
+    // AdminModule
+    //para  poder pegar dados do formulário é necessário importar [módulo importado]
     // [RouterModule.forRoot(rootRouterConfig, { useHash: false })],-> substituido
   ],
   providers: [
+    AuthGuard
     // { provide: APP_BASE_HREF, useValue: "/" }
   ],
   bootstrap: [AppComponent],

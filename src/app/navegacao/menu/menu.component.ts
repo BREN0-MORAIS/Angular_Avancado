@@ -30,6 +30,12 @@ export class MenuComponent {
       exact: true,
       admin: true,
     },
+    {
+      link: "/admin",
+      name: "Admin",
+      exact: true,
+      admin: true,
+    },
   ];
 }
 

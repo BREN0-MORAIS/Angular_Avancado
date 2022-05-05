@@ -6,6 +6,7 @@ import { ContatoComponent } from "./Institucional/contato/contato.component";
 import { SobreComponent } from "./Institucional/sobre/sobre.component";
 import { HomeComponent } from "./navegacao/home/home.component";
 import { NotFoundComponent } from "./navegacao/not-found/not-found.component";
+import { AuthGuard } from "./services/app.guard";
 
 export const rootRouterConfig: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -22,6 +23,13 @@ export const rootRouterConfig: Routes = [
       ), //abordagem lazy loading
   },
 
+  {
+    path:"admin",
+    loadChildren:()=> import("./admin/admin.module").then((m)=> m.AdminModule),
+    canLoad:[AuthGuard],
+    canActivate:[AuthGuard]
+  },
+
   { path: "**", component: NotFoundComponent }, // caso o usuário escreva algo na url que não tenha na aplicação.
 ];
 
@@ -34,7 +42,7 @@ export const rootRouterConfig: Routes = [
   /*enableTracing: true , habilita o log de rotas*/
 
   /*
-  pra dicar acessivel para todos é necessário  adicionar no exports.
+    pra dicar acessivel para todos é necessário  adicionar no exports.
   */
   exports: [RouterModule],
 })
