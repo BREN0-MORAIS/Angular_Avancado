@@ -16,6 +16,8 @@ export class CadastroComponent implements OnInit {
   cadastroForm!: FormGroup; //é necessario para poder armazenar e referenciar qual formulário deve pegar os dados
   Usuario!: Usuario;
   formResult: string = "";
+  mundancasNaoSalvas?: boolean;
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -44,7 +46,11 @@ export class CadastroComponent implements OnInit {
     if (this.cadastroForm.dirty && this.cadastroForm.valid) {
       this.Usuario = Object.assign({}, this.Usuario, this.cadastroForm.value); //converte os  valores do frormulario em objetos
       this.formResult = JSON.stringify(this.cadastroForm.value);
+
+      this.mundancasNaoSalvas = false;
     } else {
+      this.mundancasNaoSalvas = true;
+
       console.log("asd");
     }
   }
